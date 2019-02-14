@@ -6,25 +6,25 @@
 //  Copyright © 2019 EL2M. All rights reserved.
 //
 
-#include <stdio.h> // Einlesen/Auslesen
+#include <stdio.h> // Einlesen/Ausgeben
 #include <string.h> // Stringhandling
 #include <netinet/in.h> // Internet-Domains
 #include "server.h"
 #include "functions.h"
 
-#define BUFFERSIZE 128
+#define BUFFERSIZE 128 // maximale Groeße der eingegebenen Nachricht
 
 void startServer() // Hauptprogramm des Servers
 {
     int sockfd;
     int newsockfd;
     int portno;
-    socklen_t clilen; // benötigte Variablen für Socket-Verbindung
+    socklen_t clilen; // benoetigte Variablen für Socket-Verbindung
     int test; // zur Terminierung der while-Schleife
     int input; // Eingabevariable zur Optionenauswahl
     char firstLetter;
     char buffer[BUFFERSIZE]; // speichert die eingegebene Nachricht
-    struct sockaddr_in serv_addr; // enthält Internetadresse des Servers
+    struct sockaddr_in serv_addr; // enthaelt Internetadresse des Servers
     struct sockaddr_in cli_addr; // enthält Internetadresse des Clients
     sockfd = socket(AF_INET, SOCK_STREAM, 0); // erstellt einen neuen Socket
     if (sockfd < 0)
@@ -51,6 +51,7 @@ void startServer() // Hauptprogramm des Servers
     }
     else printf("Client connected!\n");
     test = 1;
+    // In der Schleife wird der Nutzer immer wieder aufgefordert, auszuwählen, ob er neue Nachrichten empfangen, oder eine neue Nachricht verschicken will.
     while (test == 1)
     {
         printf("Choose action:\n");
@@ -67,7 +68,7 @@ void startServer() // Hauptprogramm des Servers
                 printf("Please enter message:\n");
                 firstLetter = getchar();
                 bzero(buffer, BUFFERSIZE);
-                fgets(buffer, BUFFERSIZE - 1, stdin);
+                fgets(buffer, BUFFERSIZE - 1, stdin); // Einlesen der eingegebenen Nachricht
                 for (int i = (int)strlen(buffer); i >= 0; i--)
                 {
                     buffer[i + 1] = buffer[i];
@@ -76,7 +77,7 @@ void startServer() // Hauptprogramm des Servers
                 writeMessage(newsockfd, buffer);
                 break;
             case 3:
-                test = 0;
+                test = 0; // beendet das Programm, indem es die Schleifenbedingung nicht mehr erfüllt
                 break;
             default:
                 printf("Invalid input.\n");
