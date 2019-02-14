@@ -71,7 +71,7 @@ void startClient()
                 firstLetter = getchar();
                 bzero(buffer, BUFFERSIZE);
                 fgets(buffer, BUFFERSIZE - 1, stdin);
-                for (int i = strlen(buffer); i >= 0; i--)
+                for (int i = (int)strlen(buffer); i >= 0; i--)
                 {
                     buffer[i + 1] = buffer[i];
                 }

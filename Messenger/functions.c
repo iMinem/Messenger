@@ -28,8 +28,7 @@ void writeMessage(int sock, char* buffer)
     strcpy(key, "abc");
     int n;
     strcpy(cryptedMsg, crypter(buffer, key));
-    n = write(sock, cryptedMsg, strlen(cryptedMsg));
-    printf("Message sent!\n");
+    n = (int)write(sock, cryptedMsg, strlen(cryptedMsg));
     if (n < 0)
     {
         error("ERROR: writing to socket");
@@ -41,21 +40,24 @@ void readMessage(int sock)
     char message[BUFFERSIZE];
     char key[4];
     strcpy(key, "abc");
-    writeMessage(sock, "Partner in reading mode...");
+    write(sock, "reading mode\n", 15);
     int n;
     char buffer[BUFFERSIZE];
     bzero(buffer, BUFFERSIZE);
     bzero(message, BUFFERSIZE);
-    n = read(sock, buffer, BUFFERSIZE - 1);
+    n = (int)read(sock, buffer, BUFFERSIZE - 1);
     if (n < 0)
     {
         error("ERROR: reading from socket");
     }
-    strcpy(message, decrypter(buffer, key));
-    printf("%s\n", message);
-    if (strcmp(message, "Partner in reading mode...\n") == 0)
+    if (strcmp(buffer, "reading mode\n") == 0)
     {
-        readMessage(sock);
+        printf("No new messages.\n");
+    }
+    else
+    {
+        strcpy(message, decrypter(buffer, key));
+        printf("%s\n", message);
     }
 }
 

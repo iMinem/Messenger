@@ -6,45 +6,45 @@
 //  Copyright © 2019 EL2M. All rights reserved.
 //
 
-#include <stdio.h>
-#include <string.h>
-#include <netinet/in.h>
+#include <stdio.h> // Einlesen/Auslesen
+#include <string.h> // Stringhandling
+#include <netinet/in.h> // Internet-Domains
 #include "server.h"
 #include "functions.h"
 
 #define BUFFERSIZE 128
 
-void startServer()
+void startServer() // Hauptprogramm des Servers
 {
     int sockfd;
     int newsockfd;
     int portno;
-    int test;
-    int input;
+    socklen_t clilen; // benötigte Variablen für Socket-Verbindung
+    int test; // zur Terminierung der while-Schleife
+    int input; // Eingabevariable zur Optionenauswahl
     char firstLetter;
-    char buffer[BUFFERSIZE];
-    socklen_t clilen;
-    struct sockaddr_in serv_addr;
-    struct sockaddr_in cli_addr;
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    char buffer[BUFFERSIZE]; // speichert die eingegebene Nachricht
+    struct sockaddr_in serv_addr; // enthält Internetadresse des Servers
+    struct sockaddr_in cli_addr; // enthält Internetadresse des Clients
+    sockfd = socket(AF_INET, SOCK_STREAM, 0); // erstellt einen neuen Socket
     if (sockfd < 0)
     {
         error("ERROR: failed to open socket");
     }
-    bzero((char*)&serv_addr, sizeof(serv_addr));
+    bzero((char*)&serv_addr, sizeof(serv_addr)); // initialisiert serv_addr mit Nullen
     printf("Please enter a valid port number (choose a number between 2000 and 65535).\n");
-    enterPort(&portno);
+    enterPort(&portno); // Eingabe der Portnummer
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
-    serv_addr.sin_port = htons(portno);
-    if (bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0)
+    serv_addr.sin_port = htons(portno); // serv_addr die jeweiligen Werte zuweisen
+    if (bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) // bindet den Socket an die Adresse
     {
         error("ERROR: binding failed");
     }
     printf("Waiting for client...\n");
-    listen(sockfd, 5);
+    listen(sockfd, 5); // wartet auf eine Anfrage von einem Client
     clilen = sizeof(cli_addr);
-    newsockfd = accept(sockfd, (struct sockaddr*) &cli_addr, &clilen);
+    newsockfd = accept(sockfd, (struct sockaddr*) &cli_addr, &clilen); // accept() blockt den Prozess, bis ein Client verbunden wurde
     if (newsockfd < 0)
     {
         error("ERROR: accept");
@@ -68,7 +68,7 @@ void startServer()
                 firstLetter = getchar();
                 bzero(buffer, BUFFERSIZE);
                 fgets(buffer, BUFFERSIZE - 1, stdin);
-                for (int i = strlen(buffer); i >= 0; i--)
+                for (int i = (int)strlen(buffer); i >= 0; i--)
                 {
                     buffer[i + 1] = buffer[i];
                 }
