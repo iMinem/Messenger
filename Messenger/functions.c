@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/select.h>
 #include "functions.h"
 #include "encryption.h"
 
@@ -37,15 +38,36 @@ void writeMessage(int sock, char* buffer)
 
 void readMessage(int sock)
 {
+    //int n;
+    char buffer[BUFFERSIZE];
     char message[BUFFERSIZE];
     char key[4];
-    strcpy(key, "abc");
-    write(sock, "reading mode\n", 15);
-    int n;
-    char buffer[BUFFERSIZE];
     bzero(buffer, BUFFERSIZE);
     bzero(message, BUFFERSIZE);
-    n = (int)read(sock, buffer, BUFFERSIZE - 1);
+    
+    fd_set readset;
+    struct timeval tv;
+    int retval;
+    
+    FD_ZERO(&readset);
+    FD_SET(sock, &readset);
+    
+    tv.tv_sec = 1;
+    tv.tv_usec = 0;
+    
+    strcpy(key, "abc");
+    retval = select(sock + 1, &readset, NULL, NULL, &tv);
+    if (retval == 1)
+    {
+        read(sock, buffer, BUFFERSIZE - 1);
+        strcpy(message, decrypter(buffer, key));
+        printf("%s\n", message);
+    }
+    else
+    {
+        printf("No new messages.\n");
+    }
+    /*n = (int)read(sock, buffer, BUFFERSIZE - 1);
     if (n < 0)
     {
         error("ERROR: reading from socket");
@@ -58,7 +80,7 @@ void readMessage(int sock)
     {
         strcpy(message, decrypter(buffer, key));
         printf("%s\n", message);
-    }
+    }*/
 }
 
 void enterPort(int* portno)

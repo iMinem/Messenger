@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		86538A0B221416BC008A830C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 86538A0A221416BC008A830C /* main.c */; };
+		86538A132214184C008A830C /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 86538A122214184C008A830C /* server.c */; };
+		86538A162214185C008A830C /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 86538A152214185C008A830C /* client.c */; };
+		86538A19221418A6008A830C /* functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 86538A18221418A6008A830C /* functions.c */; };
+		86538A1E221440CA008A830C /* encryption.c in Sources */ = {isa = PBXBuildFile; fileRef = 86538A1D221440CA008A830C /* encryption.c */; };
+		86538A202214D0E4008A830C /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = 86538A1F2214D0E4008A830C /* makefile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,15 @@
 /* Begin PBXFileReference section */
 		86538A07221416BC008A830C /* Messenger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Messenger; sourceTree = BUILT_PRODUCTS_DIR; };
 		86538A0A221416BC008A830C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		86538A112214184C008A830C /* server.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = server.h; sourceTree = "<group>"; };
+		86538A122214184C008A830C /* server.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = server.c; sourceTree = "<group>"; };
+		86538A142214185C008A830C /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
+		86538A152214185C008A830C /* client.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = client.c; sourceTree = "<group>"; };
+		86538A17221418A6008A830C /* functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
+		86538A18221418A6008A830C /* functions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = functions.c; sourceTree = "<group>"; };
+		86538A1C221440CA008A830C /* encryption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = encryption.h; sourceTree = "<group>"; };
+		86538A1D221440CA008A830C /* encryption.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = encryption.c; sourceTree = "<group>"; };
+		86538A1F2214D0E4008A830C /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,15 @@
 			isa = PBXGroup;
 			children = (
 				86538A0A221416BC008A830C /* main.c */,
+				86538A112214184C008A830C /* server.h */,
+				86538A122214184C008A830C /* server.c */,
+				86538A142214185C008A830C /* client.h */,
+				86538A152214185C008A830C /* client.c */,
+				86538A17221418A6008A830C /* functions.h */,
+				86538A18221418A6008A830C /* functions.c */,
+				86538A1C221440CA008A830C /* encryption.h */,
+				86538A1D221440CA008A830C /* encryption.c */,
+				86538A1F2214D0E4008A830C /* makefile */,
 			);
 			path = Messenger;
 			sourceTree = "<group>";
@@ -118,7 +141,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86538A1E221440CA008A830C /* encryption.c in Sources */,
+				86538A132214184C008A830C /* server.c in Sources */,
+				86538A202214D0E4008A830C /* makefile in Sources */,
+				86538A19221418A6008A830C /* functions.c in Sources */,
 				86538A0B221416BC008A830C /* main.c in Sources */,
+				86538A162214185C008A830C /* client.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
