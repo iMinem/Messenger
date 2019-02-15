@@ -51,7 +51,7 @@ void startServer() // Hauptprogramm des Servers
     }
     else printf("Client connected!\n");
     test = 1;
-    // In der Schleife wird der Nutzer immer wieder aufgefordert, auszuwählen, ob er neue Nachrichten empfangen, oder eine neue Nachricht verschicken will.
+    // In der Schleife wird der Nutzer immer wieder aufgefordert, auszuwählen, ob er neue Nachrichten empfangen oder eine neue Nachricht verschicken will.
     while (test == 1)
     {
         printf("Choose action:\n");

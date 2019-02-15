@@ -10,7 +10,7 @@ int* conv_key(const char*);                                        //key in inte
 char* crypter(const char*, const char*);                        //verschl¸sselt die gegebene nachricht mit einem gegebenen key
 char* decrypter(const char*, const char*);                        //entschl¸sselt die verschl¸sselte nachricht mit dem richtigen key
 
-void encryption(){
+/*void encryption(){
     char message[INPUTLEN] = { NULL }, key[MAX_KEYLEN], decryptKey[MAX_KEYLEN] = { NULL };    //erstellt char arrays f¸r eingegebene message und schl¸ssel
     while (strcmp(key, "quit") != 0){
         gets(message);                                //texteingabe
@@ -19,7 +19,7 @@ void encryption(){
         puts(message);                                            //verschl¸sselte ausgabe
         puts(decrypter(message, decryptKey));                    //entschl¸sselte ausgabe
     }
-}
+}*/
 
 int len(const char *a){
     if (a == NULL) { return NULL; }

@@ -66,6 +66,7 @@ void readMessage(int sock) // checkt, ob es eine neue Nachricht gibt; falls ja w
 
 void enterPort(int* portno) // Eingabe der Portnummer
 {
+    getchar();
     if (scanf("%d", portno) == 0 || *portno < 2000 || *portno > 65535)
     {
         getchar();
