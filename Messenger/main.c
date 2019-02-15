@@ -9,7 +9,6 @@
 #include <stdio.h> // Einlesen/Auslesen
 #include "server.h"
 #include "client.h"
-#include "encryption.h"
 
 int main()
 {
