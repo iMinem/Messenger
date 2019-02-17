@@ -2,9 +2,6 @@
 //  functions.c
 //  Messenger
 //
-//  Created by Max Marhofen on 13.02.19.
-//  Copyright © 2019 EL2M. All rights reserved.
-//
 
 #include <stdio.h> // Einlesen/Ausgeben
 #include <stdlib.h> // exit()
@@ -66,7 +63,7 @@ void readMessage(int sock) // checkt, ob es eine neue Nachricht gibt; falls ja w
 
 void enterPort(int* portno) // Eingabe der Portnummer
 {
-    getchar();
+    //getchar();
     if (scanf("%d", portno) == 0 || *portno < 2000 || *portno > 65535)
     {
         getchar();

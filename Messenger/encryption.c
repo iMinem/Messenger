@@ -1,3 +1,8 @@
+//
+//encryption.c
+//Messenger
+//
+
 #include <stdio.h>                                                //input output funktionen
 #include <string.h>                                                //strcpy funktion
 #include "encryption.h"

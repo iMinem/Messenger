@@ -1,3 +1,8 @@
+//
+//encryption.h
+//Messenger
+//
+
 void encryption(void);
 int len(const char *a);
 int intlen(const int *d);
